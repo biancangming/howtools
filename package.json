@@ -1,0 +1,22 @@
+{
+  "name": "howtools",
+  "version": "0.1.1",
+  "description": "a simple tool",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon -e ts --exec ts-node ./src/index.ts",
+    "build": "cross-env NODE_ENV=production tsc"
+  },
+  "typings": "./types/index.d.ts",
+  "keywords": [],
+  "author": "biancangming",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/node": "^16.9.1",
+    "cross-env": "^6.0.3",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.2.1"
+  }
+}

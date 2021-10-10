@@ -19,6 +19,12 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org
 
+      - name: NPM Install
+        run: npm i
+
+      - name: NPM Build
+        run: npm run build
+
       - name: Publish to NPM
         run: npm publish || true
         env:

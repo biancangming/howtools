@@ -1,11 +1,16 @@
 {
   "name": "howtools",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "a simple tool",
   "main": "dist/src/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon -e ts --exec ts-node ./src/index.ts",
     "build": "cross-env NODE_ENV=production tsc"
+  },
+  "homepage": "https://github.com/biancangming/howtools",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vue.git"
   },
   "typings": "./types/index.d.ts",
   "keywords": [],

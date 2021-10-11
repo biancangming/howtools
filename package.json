@@ -17,6 +17,7 @@
   "author": "biancangming",
   "license": "ISC",
   "dependencies": {
+    "dtsmake": "0.0.10"
   },
   "devDependencies": {
     "@types/node": "^16.9.1",

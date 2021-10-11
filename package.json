@@ -10,7 +10,7 @@
   "homepage": "https://github.com/biancangming/howtools",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vue.git"
+    "url": "git@github.com:biancangming/howtools.git"
   },
   "typings": "./types/index.d.ts",
   "keywords": [],

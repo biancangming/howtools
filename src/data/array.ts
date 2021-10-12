@@ -7,25 +7,33 @@ export function columnData<T = unknown>(arr: T[], key: string) {
     return arr.map(it => it[key])
 }
 
+
+interface rows2columnsOptions {
+    newColumns?: string[],//新列顺序
+    originColumns?: string[],//原列顺序
+}
+
 /**
- * @param  {T[]} arr 对象的数组
- * @param  {string[]=[]} columns 新的列名称，默认为0，1，2，3...
- * @description 行转列
+ * @param  {T[]} arr
+ * @param  {rows2columnsOptions} columns
  */
-export function rows2columns<T = unknown>(arr: T[], columns: string[] = []) {
+export function rows2columns<T = unknown>(arr: T[], columns: rows2columnsOptions = {}) {
     const ret = []
     const _obj = arr[0]
-    Object.keys(_obj).forEach((key, index) => {
-        if (columns.length == 0) {
-            ret.push(Object.assign({}, columnData(arr, key)))
+    const originCol = columns.originColumns || Object.keys(_obj)
+    originCol.forEach((key) => {
+        const newCol = columns.newColumns || [];
+        const newArr = columnData(arr, key)
+        if (newCol.length == 0) {
+            ret.push(Object.assign({}, newArr))
         }
         else {
-            const newArr = columnData(arr, key)
             const newObj = {}
             for (const index in newArr) {
-                newObj[columns[index]] = newArr[index]
+                newObj[newCol[index]] = newArr[index]
             }
             ret.push(newObj)
         }
     })
+    return ret
 }

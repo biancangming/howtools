@@ -16,8 +16,9 @@
   - `rows2columns` 行转列函数
   - `unique` 数组去重，支持对象数组/一般数组
 
-### src/files/exportFile
- -  `saveFileFromBlob` Blob流保存为文件
+### src/files/blob
+  - `saveFileFromBlob` Blob流保存为文件
+  - `blob2Json` Blob文件转json
 
 ### src/utils/util
   -  `debounce` 防抖函数

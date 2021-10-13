@@ -12,13 +12,13 @@
 
 ## 数据操作类
 ### src/data/array
-  `columnData` 获取对象数组某一列数据
-  `rows2columns` 行转列函数
-  `unique` 数组去重，支持对象数组/一般数组
+  - `columnData` 获取对象数组某一列数据
+  - `rows2columns` 行转列函数
+  - `unique` 数组去重，支持对象数组/一般数组
 
 ### src/files/exportFile
-  `saveFileFromBlob` Blob流保存为文件
+ -  `saveFileFromBlob` Blob流保存为文件
 
 ### src/utils/util
-   `debounce` 防抖函数
-   `throttle` 节流函数
+  -  `debounce` 防抖函数
+  -  `throttle` 节流函数

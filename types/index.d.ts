@@ -1,2 +1,2 @@
-export * from "./files"
+export * from "../src/files"
 export * from "../src/data"

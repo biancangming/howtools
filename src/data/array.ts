@@ -37,3 +37,15 @@ export function rows2columns<T = unknown>(arr: T[], columns: rows2columnsOptions
     })
     return ret
 }
+
+
+/**
+ * @param  {[]} arr 一个数组
+ * @param  {string} key? 假如是对象数组，则传入要去重的key值
+ * @description 数组去重
+ */
+export function unique<T = unknown>(arr: T[], key?: string) {
+    const seen = new Map()
+    if (!key) return arr.filter((a) => !seen.has(a) && seen.set(a, 1))
+    return arr.filter((a) => !seen.has(a[key]) && seen.set(a[key], 1))
+}

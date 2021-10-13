@@ -1,4 +1,4 @@
-import { rows2columns } from "../.."
+import { rows2columns } from "./array"
 
 const obja = [
     {

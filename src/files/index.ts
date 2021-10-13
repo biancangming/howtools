@@ -1,1 +1,1 @@
-export { saveFileFromBlob } from './exportFile';
+export * from './exportFile';

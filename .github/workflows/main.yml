@@ -25,7 +25,10 @@ jobs:
       - name: NPM Build
         run: npm run build
 
+      - name: Dir ls
+        run: dir
+
       - name: Publish to NPM
-        run: npm publish || true
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

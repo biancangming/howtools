@@ -2,7 +2,7 @@
   "name": "howtools",
   "version": "0.1.6",
   "description": "a simple tool",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "npx cross-env NODE_ENV=development nodemon -e ts --exec ts-node ./src/index.ts",
     "build": "npx cross-env NODE_ENV=production tsc --declaration"

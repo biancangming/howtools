@@ -4,7 +4,7 @@ import { isBrowser } from './util';
  * @description 验证数据类型
  */
 export function typeOf(target: unknown): 'Number' | 'String' | 'Boolean' | 'Undefined' | 'Null' | 'Symbol' | 'Function' | 'Array' | 'Object' | 'RegExp' | 'Promise' | 'Element' {
-    if (isBrowser() && target instanceof Element) return 'Element' //判断是否为dom元素
+    if (isBrowser && target instanceof Element) return 'Element' //判断是否为dom元素
     return Object.prototype.toString.call(target).slice(8, -1)
 }
 

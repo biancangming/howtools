@@ -49,3 +49,16 @@ export function unique<T = unknown>(arr: T[], key?: string) {
     if (!key) return arr.filter((a) => !seen.has(a) && seen.set(a, 1))
     return arr.filter((a) => !seen.has(a[key]) && seen.set(a[key], 1))
 }
+
+/**
+ * 数组求和
+ * @param arr 对象数组 或者 数字数组
+ * @param key 列名称
+ */
+export function arrSum<T>(arr: T[], key?: string) {
+    const tempArr = key ? columnData(arr, key) : arr;
+    return tempArr.reduce((temp, cur) => {
+        if(isNaN(cur)) throw new Error(`非数字不能进行求和计算!, 数组: ${tempArr}, key: ${key}`)
+        return temp + Number(cur)
+    }, 0)
+}

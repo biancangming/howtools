@@ -75,3 +75,13 @@ export function uuid() {
     });
 }
 
+/**
+ * @description 判断是否为浏览器环境
+ */
+export const isBrowser = typeof window !== 'undefined'
+
+
+/**
+ * @description 判断是否为服务器环境
+ */
+export const isServer = !isBrowser

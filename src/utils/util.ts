@@ -75,3 +75,9 @@ export function uuid() {
     });
 }
 
+/**
+ * @description 判断是否为浏览器环境
+ */
+export function isBrowser() {
+    return typeof window !== 'undefined'
+}

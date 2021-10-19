@@ -11,14 +11,19 @@
 > 简单介绍函数作用，具体需要在`src`文件夹下查看函数的具体作用。
 
 ## 数据操作类
-### src/data/array
+### src/data
+#### 数组处理
   - `columnData` 获取对象数组某一列数据
   - `rows2columns` 行转列函数
   - `unique` 数组去重，支持对象数组/一般数组
+#### 拷贝
+  - `deepClone` 深拷贝
 
 ### src/files/blob
   - `saveFileFromBlob` Blob流保存为文件
   - `blob2Json` Blob文件转json
+  - `html2word` 将html文件转化为word [@chendongpo123](https://github.com/chendongpo123)
+  - `table2excel` 将原生table文件转化为excel [@chendongpo123](https://github.com/chendongpo123)
 
 ### src/utils
 #### 节流防抖
@@ -43,3 +48,4 @@
    - `uuid` 生成一个uuid
    - `isJSON` 判断是否为json字符串
    - `randomColor` 随机十六进制颜色
+   - `isBrowser` 判断是否为浏览器环境

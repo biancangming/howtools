@@ -1,4 +1,4 @@
-import { typeOf, isRegExp, isNumber } from './type';
+import { typeOf, isRegExp, isNumber, isEmpty } from './type';
 import { debounce } from './util';
 import { md5 } from './md5';
 
@@ -35,6 +35,14 @@ console.log("/.*?/ is", typeOf(/.*?/))
 
 console.log(isRegExp(/.*?/))
 console.log(isNumber(0))
+console.log("===================空对象验证测试=============================")
+console.log("[] is == >",isEmpty([]))
+console.log("{} is == >",isEmpty({}))
+console.log("0 is == >",isEmpty(0))
+console.log("\" \" is == >",isEmpty(" "))
+console.log("\"\" is == >",isEmpty(""))
+console.log("null is == >",isEmpty(null))
+console.log("undefined is == >",isEmpty(undefined))
 
 //MD5 校验
 console.log("===================MD5 校验测试=============================")

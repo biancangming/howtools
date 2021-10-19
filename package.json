@@ -1,6 +1,6 @@
 {
   "name": "howtools",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "a simple tool",
   "main": "dist/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "author": "biancangming",
   "license": "ISC",
   "dependencies": {
-    "dtsmake": "0.0.10"
+    "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
     "@types/node": "^16.9.1",

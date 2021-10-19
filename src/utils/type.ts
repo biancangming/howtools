@@ -3,7 +3,7 @@ import { isBrowser } from './util';
  * @param  {unknown} target 输入对象
  * @description 验证数据类型
  */
-export function typeOf(target: unknown): 'Number' | 'String' | 'Boolean' | 'Undefined' | 'Null' | 'Symbol' | 'Function' | 'Array' | 'Object' | 'RegExp' | 'Element' {
+export function typeOf(target: unknown): 'Number' | 'String' | 'Boolean' | 'Undefined' | 'Null' | 'Symbol' | 'Function' | 'Array' | 'Object' | 'RegExp' | 'Promise' | 'Element' {
     if (isBrowser() && target instanceof Element) return 'Element' //判断是否为dom元素
     return Object.prototype.toString.call(target).slice(8, -1)
 }
@@ -57,6 +57,14 @@ export function isSymbol(target: unknown) {
 
 /**
  * @param  {unknown} target 输入数据类型
+ * @description 验证是否是一个Promise
+ */
+export function isPromise(target: unknown) {
+    return typeOf(target) == 'Promise'
+}
+
+/**
+ * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个函数
  */
 export function isFunction(target: unknown) {
@@ -104,6 +112,10 @@ export function isEmpty(target: unknown) {
     if (isObject(target)) return Object.keys(target).length == 0
     //验证是否是一个空数组
     if (isArray(target)) return (target as unknown[]).length == 0
+    //验证Map set是否为空
+    if (target instanceof Map || target instanceof Set) {
+        return target.size === 0;
+    }
     //验证是否是一个空串/null/undefined
     return ["", null, undefined].includes(target as string | null | undefined)
 }

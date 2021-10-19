@@ -43,8 +43,35 @@ export function isJSON(str: string) {
             }
 
         } catch (e) {
-            console.warn('error：' + str.slice(0, 100) + '!!!' + e);
             return false;
         }
     }
 }
+/**
+ * @description 随机的颜色 
+ */
+export function randomColor() {
+    let r, g, b;
+    r = Math.floor(Math.random() * 256);
+    g = Math.floor(Math.random() * 256);
+    b = Math.floor(Math.random() * 256);
+    var hex =
+        "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    return hex;
+}
+
+
+/**
+ * @description UUID 生成
+ */
+export function uuid() {
+    // 获取唯一值
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (
+        c
+    ) {
+        var r = (Math.random() * 16) | 0,
+            v = c == "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+    });
+}
+

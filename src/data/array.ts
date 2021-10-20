@@ -55,7 +55,7 @@ export function unique<T = unknown>(arr: T[], key?: string) {
  * @param arr 对象数组 或者 数字数组
  * @param key 列名称
  */
-export function arrSum<T>(arr: T[], key?: string) {
+export function arrSum<T>(arr: T[], key?: string): number {
     const tempArr = key ? columnData(arr, key) : arr;
     return tempArr.reduce((temp, cur) => {
         if(isNaN(cur)) throw new Error(`非数字不能进行求和计算!, 数组: ${tempArr}, key: ${key}`)

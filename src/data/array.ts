@@ -1,3 +1,5 @@
+import {isFunction} from "../../utils/type";
+
 /**
  * @param  {T[]} arr 对象的数组
  * @param  {string} key 列名称
@@ -64,6 +66,21 @@ export function arrSum<T>(arr: T[], key?: string): number {
 }
 
 
+type callbackFunc<T> = (data: T, idx?: number) => any;
+/**
+ * 数组分组
+ * @param arr 对象数组 或者 基础类型数组
+ * @param key 列名称 或者 函数
+ */
+export function arrGroupBy<T>(arr: T[], key?: string | callbackFunc<T>): Object {
+    const ret = {}, isFunc = isFunction(key);
+    arr.forEach((o, idx) => {
+        const value = key ? isFunc ? (key as callbackFunc<T>)(o, idx) : o[key as string] : o;
+        ret.hasOwnProperty(value) ? ret[value].push(o) : ret[value] = [o];
+    })
+    return ret;
+}
+
 /**
  * 求数组中位数
  * @param  {number[]} arr 数组
@@ -83,4 +100,4 @@ export function arrMedian(arr: number[]) {
     } else {
         return tempArr[Math.floor(len / 2)];
     }
-};
+}

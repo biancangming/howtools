@@ -1,4 +1,4 @@
-import { rows2columns, unique } from './array';
+import { rows2columns, unique, arrMedian } from './array';
 
 console.log("==============行转列=====================")
 const obja = [
@@ -25,6 +25,8 @@ console.log(rows2columns(obja, {
 }))
 
 console.log("==============数组去重=====================")
-
 console.log(unique(obja, "gender"))
 console.log(unique([1, 2, 34, 5, 6, 7, 2, 1]))
+
+console.log("==============数组中位数=====================")
+console.log("数组中位数", arrMedian([1, 10, 30, 2, 5, 6, 7]))

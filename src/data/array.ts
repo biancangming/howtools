@@ -58,7 +58,28 @@ export function unique<T = unknown>(arr: T[], key?: string) {
 export function arrSum<T>(arr: T[], key?: string): number {
     const tempArr = key ? columnData(arr, key) : arr;
     return tempArr.reduce((temp, cur) => {
-        if(isNaN(cur)) throw new Error(`非数字不能进行求和计算!, 数组: ${tempArr}, key: ${key}`)
+        if (isNaN(cur)) throw new Error(`非数字不能进行求和计算!, 数组: ${tempArr}, key: ${key}`)
         return temp + Number(cur)
     }, 0)
 }
+
+
+/**
+ * 求数组中位数
+ * @param  {number[]} arr 数组
+ */
+export function arrMedian(arr: number[]) {
+    arr.sort((a, b) => {
+        if (a < b) return -1;
+        if (a > b) return 1;
+        return 0;
+    })
+
+    const len = arr.length
+
+    if (len % 2 == 0) {
+        return (arr[len / 2 - 1] + arr[len / 2]) / 2;
+    } else {
+        return arr[Math.floor(len / 2)];
+    }
+};

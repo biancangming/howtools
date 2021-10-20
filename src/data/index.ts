@@ -1,2 +1,2 @@
-export { columnData, rows2columns, unique } from "./array"
+export { columnData, rows2columns, unique, arrSum, arrMedian } from "./array"
 export { deepClone } from "./clone"

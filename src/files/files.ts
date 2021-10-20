@@ -1,11 +1,11 @@
+import {saveFileFromBlob} from "./blob";
+
 /**
  * html 导出 word（.doc 格式）
  * 兼容导出图片。
  * @param htmlContent html的string值  例如 <h>导出文件</h>
  * @param fileName 导出文件名称不带后缀
  */
-import {saveFileFromBlob} from "./blob";
-
 export function html2word(htmlContent: string, fileName = `${new Date().getTime()}`) {
     const fileBody = {
         top: "Mime-Version: 1.0\nContent-Base: " + '' + "\nContent-Type: Multipart/related; boundary=\"NEXT.ITEM-BOUNDARY\";type=\"text/html\"\n\n--NEXT.ITEM-BOUNDARY\nContent-Type: text/html; charset=\"utf-8\"\nContent-Location: " + '' + "\n\n<!DOCTYPE html>\n<html>\n_html_</html>",

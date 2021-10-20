@@ -49,3 +49,38 @@ export function unique<T = unknown>(arr: T[], key?: string) {
     if (!key) return arr.filter((a) => !seen.has(a) && seen.set(a, 1))
     return arr.filter((a) => !seen.has(a[key]) && seen.set(a[key], 1))
 }
+
+/**
+ * 数组求和
+ * @param arr 对象数组 或者 数字数组
+ * @param key 列名称
+ */
+export function arrSum<T>(arr: T[], key?: string): number {
+    const tempArr = key ? columnData(arr, key) : arr;
+    return tempArr.reduce((temp, cur) => {
+        if (isNaN(cur)) throw new Error(`非数字不能进行求和计算!, 数组: ${tempArr}, key: ${key}`)
+        return temp + Number(cur)
+    }, 0)
+}
+
+
+/**
+ * 求数组中位数
+ * @param  {number[]} arr 数组
+ */
+export function arrMedian(arr: number[]) {
+    //[...arr]复制中位数，防止修改外部列表
+    const tempArr = [...arr].sort((a, b) => {
+        if (a < b) return -1;
+        if (a > b) return 1;
+        return 0;
+    })
+
+    const len = tempArr.length
+
+    if (len % 2 == 0) {
+        return (tempArr[len / 2 - 1] + tempArr[len / 2]) / 2;
+    } else {
+        return tempArr[Math.floor(len / 2)];
+    }
+};

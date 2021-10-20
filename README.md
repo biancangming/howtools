@@ -19,6 +19,8 @@
 - `columnData` 获取对象数组某一列数据
 - `rows2columns` 行转列函数
 - `unique` 数组去重，支持对象数组/一般数组
+- `arrSum` 数组求和，支持对象数组/一般数组 [@chendongpo123](https://github.com/chendongpo123)
+- `arrMedian` 数组求中位数
 
 #### 拷贝
 

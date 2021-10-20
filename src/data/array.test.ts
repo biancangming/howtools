@@ -29,4 +29,6 @@ console.log(unique(obja, "gender"))
 console.log(unique([1, 2, 34, 5, 6, 7, 2, 1]))
 
 console.log("==============数组中位数=====================")
-console.log("数组中位数", arrMedian([1, 10, 30, 2, 5, 6, 7]))
+const orgArr = [1, 10, 30, 2, 5, 6, 7]
+console.log("数组中位数", arrMedian(orgArr))
+console.log(orgArr)

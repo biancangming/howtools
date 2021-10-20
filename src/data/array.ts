@@ -69,17 +69,18 @@ export function arrSum<T>(arr: T[], key?: string): number {
  * @param  {number[]} arr 数组
  */
 export function arrMedian(arr: number[]) {
-    arr.sort((a, b) => {
+    //[...arr]复制中位数，防止修改外部列表
+    const tempArr = [...arr].sort((a, b) => {
         if (a < b) return -1;
         if (a > b) return 1;
         return 0;
     })
 
-    const len = arr.length
+    const len = tempArr.length
 
     if (len % 2 == 0) {
-        return (arr[len / 2 - 1] + arr[len / 2]) / 2;
+        return (tempArr[len / 2 - 1] + tempArr[len / 2]) / 2;
     } else {
-        return arr[Math.floor(len / 2)];
+        return tempArr[Math.floor(len / 2)];
     }
 };

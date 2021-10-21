@@ -1,4 +1,4 @@
-import {isFunction} from "../../utils/type";
+import {isFunction} from "@/utils/type";
 
 /**
  * @param  {T[]} arr 对象的数组

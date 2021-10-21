@@ -3,7 +3,7 @@
  * @param  {} delay=500 延迟时间默认500 ms
  *  @description 节流函数
  */
-export function throttle(fn: Function, delay = 500) {
+export const throttle = (fn: Function, delay = 500) => {
     let timer: NodeJS.Timeout = null
     return (...args: unknown[]) => {
         if (!timer) {
@@ -20,7 +20,7 @@ export function throttle(fn: Function, delay = 500) {
  * @param  {} delay=500 延迟时间默认500 ms
  * @description 防抖函数
  */
-export function debounce(fn: Function, delay = 500) {
+export const debounce = (fn: Function, delay = 500) => {
     let timer: NodeJS.Timeout = null;
     return (...args: unknown[]) => {
         if (timer) clearTimeout(timer);

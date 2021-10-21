@@ -20,13 +20,14 @@
 - `rows2columns` 行转列函数
 - `unique` 数组去重，支持对象数组/一般数组
 - `arrSum` 数组求和，支持对象数组/一般数组 [@chendongpo123](https://github.com/chendongpo123)
-- `arrSum` 数组分组，支持对象数组/一般数组 [@chendongpo123](https://github.com/chendongpo123)
+- `arrGroupBy` 数组分组，支持对象数组/一般数组 [@chendongpo123](https://github.com/chendongpo123)
 - `arrMedian` 数组求中位数
 
 #### 拷贝
 
 - `deepClone` 深拷贝
 
+## 文件操作
 ### src/files/blob
 
 - `saveFileFromBlob` Blob 流保存为文件
@@ -34,6 +35,8 @@
 - `html2word` 将 html 文件转化为 word [@chendongpo123](https://github.com/chendongpo123)
 - `table2excel` 将原生 table 文件转化为 excel [@chendongpo123](https://github.com/chendongpo123)
 
+
+## 其他工具
 ### src/utils
 
 #### 节流防抖

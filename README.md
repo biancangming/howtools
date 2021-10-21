@@ -28,6 +28,7 @@
 - `deepClone` 深拷贝
 
 ## 文件操作
+
 ### src/files/blob
 
 - `saveFileFromBlob` Blob 流保存为文件
@@ -35,8 +36,8 @@
 - `html2word` 将 html 文件转化为 word [@chendongpo123](https://github.com/chendongpo123)
 - `table2excel` 将原生 table 文件转化为 excel [@chendongpo123](https://github.com/chendongpo123)
 
-
 ## 其他工具
+
 ### src/utils
 
 #### 节流防抖
@@ -60,11 +61,24 @@
 - `isElement` 验证是否是一个 dom 元素
 - `isEmpty` 验证是否是一个空的对象，支持 `"",null,undefined,{},Array,Map,set`
 
-#### dom相关
- - `addResizeListener` 添加dom监听
- - `removeResizeListener` 移除dom监听
+#### 常用正则表达式
 
-### 其他工具
+- `urlReg` url 正则表达式
+- `ipv4Reg` IPv4
+- `ipv6Reg` IPv6
+- `mobilePhoneReg` 手机号正则
+- `emailReg` 邮箱正则
+- `naturalNumberReg` 自然数
+- `numberAndWordReg` 数字字母正则
+- `idCard1Reg` 一代身份证
+- `idCard2Reg` 二代身份证
+
+#### dom 相关
+
+- `addResizeListener` 添加 dom 监听
+- `removeResizeListener` 移除 dom 监听
+
+#### 其他
 
 - `md5` 生成一个 md5 字符串
 - `uuid` 生成一个 uuid

@@ -1,6 +1,3 @@
 export * from "./files/index"
 export * from "./data/index"
-
-export function xx(){
-
-}
+export * from "./utils/index"

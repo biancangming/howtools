@@ -6,3 +6,4 @@ vue.d.ts
 # 发布忽略文档文件夹
 docs
 build
+.husky

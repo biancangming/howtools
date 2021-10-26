@@ -10,7 +10,8 @@
     "build:docs": "npm run register:components && vitepress build docs",
     "serve:docs": "vitepress serve docs",
     "register:components": "vitepress-rc",
-    "update:version": "ts-node ./build/updateVersions.ts"
+    "update:version": "ts-node ./build/updateVersions.ts",
+    "prepare": "husky install"
   },
   "homepage": "https://github.com/biancangming/howtools",
   "repository": {
@@ -22,11 +23,6 @@
   "license": "ISC",
   "dependencies": {
     "resize-observer-polyfill": "^1.5.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run update:version"
-    }
   },
   "devDependencies": {
     "@types/node": "^16.9.1",

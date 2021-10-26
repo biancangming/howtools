@@ -24,8 +24,7 @@ howtools 提供了全局导入方式（例如：`import { columnData } from "how
 | `howtools/data/clone`           | `deepClone`                                                                                                                                                   |
 | `howtools/utils/dom`            | `scriptLoader`,`fullScreen`,`exitScreen`                                                                                                                      |
 | `howtools/utils/md5`            | `md5`                                                                                                                                                         |
-| `howtools/utils/regex`          | `scriptLoader`,`fullScreen`,`exitScreen`                                                                                                                      |
-| `howtools/utils/dom`            | `urlReg`,`ipv4Reg`,`ipv6Reg`,`mobilePhoneReg`,`emailReg`,`naturalNumberReg`,`numberAndWordReg`,`idCard1Reg`,`idCard2Reg`                                      |
+| `howtools/utils/regex`            | `urlReg`,`ipv4Reg`,`ipv6Reg`,`mobilePhoneReg`,`emailReg`,`naturalNumberReg`,`numberAndWordReg`,`idCard1Reg`,`idCard2Reg`                                      |
 | `howtools/utils/resizeObserver` | `addResizeListener`,`removeResizeListener`                                                                                                                    |
 | `howtools/utils/type`           | `typeOf`,`isNumber`,`isString` ,`isBoolean` ,`isUndefined` ,`isNull` , `isSymbol` ,`isFunction`,`isObject` ,`isRegExp` , `isPromise` , `isElement` ,`isEmpty` |
 | `howtools/utils/util`           | `md5`,`uuid`,`isJSON`,`randomColor`,`isBrowser`                                                                                                               |

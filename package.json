@@ -10,8 +10,7 @@
     "build:docs": "npm run register:components && vitepress build docs",
     "serve:docs": "vitepress serve docs",
     "register:components": "vitepress-rc",
-    "update:version": "ts-node ./build/updateVersions.ts",
-    "prepare": "husky install"
+    "update:version": "ts-node ./build/updateVersion.ts"
   },
   "homepage": "https://github.com/biancangming/howtools",
   "repository": {
@@ -28,9 +27,9 @@
     "@types/node": "^16.9.1",
     "cross-env": "^6.0.3",
     "esbuild-register": "^3.0.0",
-    "husky": "^7.0.4",
     "nodemon": "^2.0.12",
     "ts-node": "^10.2.1",
+    "typescript": "^4.4.4",
     "vite-svg-loader": "^2.2.0",
     "vitepress": "^0.16.1",
     "vitepress-theme-demoblock": "^1.2.6"

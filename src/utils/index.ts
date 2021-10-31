@@ -3,3 +3,4 @@ export { md5 } from './md5';
 export { typeOf, isNumber, isString, isBoolean, isUndefined, isNull, isSymbol, isFunction, isArray, isObject, isRegExp, isElement, isEmpty } from "./type"
 export { addResizeListener, removeResizeListener } from "./resizeObserver"
 export { regexPattern } from "./regex"
+export { dom } from "./dom"

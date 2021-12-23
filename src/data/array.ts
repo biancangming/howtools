@@ -101,3 +101,33 @@ export function arrMedian(arr: number[]) {
         return tempArr[Math.floor(len / 2)];
     }
 }
+
+
+/**
+ * @param  {T[]} arr
+ * @param  {} size=0
+ * @returns T
+ * @description 将数组分割成大小为 size 的数组，组成新数组
+ */
+export function arrChunk<T = any>(arr: T[], size = 0): T[][] {
+    if (size == 0) return [arr]
+    let chunks = [];
+    for (let i = 0; i < arr.length; i = i + size) {
+        chunks.push(arr.slice(i, i + size));
+    }
+    return chunks
+}
+
+
+/**
+ * @param  {T[]} arr
+ * @param  {} num=0
+ * @returns T
+ * @description 将数组分为num等份
+ */
+export function arrSplit<T = any>(arr: T[], num = 0): T[][] {
+    if (arr.length <= 0) return [arr];
+
+    let groupSize = Math.ceil(arr.length / num);
+    return arrChunk<T>(arr, groupSize);
+}

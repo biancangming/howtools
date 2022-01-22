@@ -90,3 +90,16 @@
 - `isJSON` 判断是否为 json 字符串
 - `randomColor` 随机十六进制颜色
 - `isBrowser` 判断是否为浏览器环境
+
+
+## 支持
+
+> IIFE: 自执行函数, 可通过 `<script>` 标签加载
+> 
+> AMD: 浏览器端的模块规范, 可通过 RequireJS 可加载
+> 
+> CommonJS: Node 默认的模块规范, 可通过 Webpack 加载
+> 
+> UMD: 兼容 IIFE, AMD, CJS 三种模块规范
+> 
+> ESM: ES2015 Module 规范, 可用 Webpack, Rollup 加载

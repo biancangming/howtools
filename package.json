@@ -1,16 +1,17 @@
 {
   "name": "howtools",
-  "version": "0.2.0",
+  "version": "0.2.0-beta.1",
   "description": "a simple tool",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "npx cross-env NODE_ENV=development nodemon -e ts --exec ts-node ./src/index.ts",
-    "build": "npx cross-env NODE_ENV=production tsc --declaration",
+    "build": "npx rollup -c",
+    "update:bate-version": "npx ts-node ./scripts/updateVersion.ts bate",
+    "update:release-version": "npx ts-node ./scripts/updateVersion.ts release",
+    "update:publish": "npx ts-node ./scripts/publish.ts",
     "dev:docs": "npm run register:components --componentsDir=demo && vitepress dev docs",
     "build:docs": "npm run register:components && vitepress build docs",
     "serve:docs": "vitepress serve docs",
-    "register:components": "vitepress-rc",
-    "update:version": "ts-node ./build/updateVersion.ts"
+    "register:components": "vitepress-rc"
   },
   "homepage": "https://github.com/biancangming/howtools",
   "repository": {
@@ -25,9 +26,13 @@
   },
   "devDependencies": {
     "@types/node": "^16.9.1",
+    "consola": "^2.15.3",
     "cross-env": "^6.0.3",
     "esbuild-register": "^3.0.0",
     "nodemon": "^2.0.12",
+    "rollup": "^2.66.0",
+    "rollup-plugin-dts": "^4.1.0",
+    "rollup-plugin-esbuild": "^4.8.2",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.4",
     "vite-svg-loader": "^2.2.0",

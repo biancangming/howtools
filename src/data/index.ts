@@ -1,2 +1,3 @@
-export { columnData, rows2columns, unique, arrSum, arrGroupBy, arrMedian } from "./array"
-export { deepClone } from "./clone"
+export * from "./array"
+export * from "./clone"
+export * from "./obj"

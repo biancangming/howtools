@@ -23,6 +23,11 @@
 - `arrGroupBy` 数组分组，支持对象数组/一般数组 [@chendongpo123](https://github.com/chendongpo123)
 - `arrMedian` 数组求中位数
 
+#### 对象操作
+
+- `objEntries` 对象for ... of ... 循环扩展
+- `objDefVal`  对象设置默认值, 不改变原对象
+
 #### 拷贝
 
 - `deepClone` 深拷贝

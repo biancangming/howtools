@@ -1,23 +1,53 @@
 import { typeOf } from '../utils/type';
-export function deepClone<T>(data: any): T {
-    const type = typeOf(data)
+import { objEntries } from './obj';
+
+/**
+ * @param  {any} data
+ * @returns T
+ * @description 浅克隆
+ */
+export function shallowClone<T = unknown>(data: any): T {
     let obj
-    if (type === 'Array') {
-        obj = []
-    } else if (type === 'Object') {
-        obj = {}
-    } else {
-        // 不再具有下一层次
-        return data
+    switch (typeOf(data)) {
+        case 'Array':
+            obj = [];
+            for (const val of data) {
+                obj.push(val)
+            }
+            break;
+        case 'Object':
+            obj = {};
+            for (const [key, val] of objEntries(data)) {
+                obj[key] = val
+            }
+            break;
+        default:
+            obj = data
     }
-    if (type === 'Array') {
-        for (let i = 0, len = data.length; i < len; i++) {
-            obj.push(deepClone(data[i]))
-        }
-    } else if (type === 'Object') {
-        for (const key in data) {
-            obj[key] = deepClone(data[key])
-        }
+    return obj
+}
+/**
+ * @param  {any} data
+ * @returns T
+ * @description 深克隆
+ */
+export function deepClone<T>(data: any): T {
+    let obj
+    switch (typeOf(data)) {
+        case 'Array':
+            obj = [];
+            for (const val of data) {
+                obj.push(deepClone(val))
+            }
+            break;
+        case 'Object':
+            obj = {};
+            for (const [key, val] of objEntries(data)) {
+                obj[key] = deepClone(val)
+            }
+            break;
+        default:
+            obj = data
     }
     return obj
 }

@@ -26,14 +26,3 @@ export const idCard1Reg = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$
 //二代身份证正则表达式(18位)
 export const idCard2Reg = /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/
 
-
-export const regexPattern = {
-    urlReg,
-    ipv4Reg,
-    ipv6Reg,
-    mobilePhoneReg,
-    emailReg,
-    naturalNumberReg,
-    idCard1Reg,
-    idCard2Reg
-}

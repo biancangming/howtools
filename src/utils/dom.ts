@@ -49,9 +49,3 @@ function Screen(mode: 'full' | 'exit') {
 
 export const fullScreen = () => Screen('full')
 export const exitScreen = () => Screen('full')
-
-export const dom = {
-  scriptLoader,
-  fullScreen,
-  exitScreen
-}

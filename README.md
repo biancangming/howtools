@@ -103,3 +103,4 @@
 > UMD: 兼容 IIFE, AMD, CJS 三种模块规范
 > 
 > ESM: ES2015 Module 规范, 可用 Webpack, Rollup 加载
+> 

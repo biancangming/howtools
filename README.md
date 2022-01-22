@@ -40,6 +40,7 @@
 - `blob2Json` Blob 文件转 json
 - `html2word` 将 html 文件转化为 word [@chendongpo123](https://github.com/chendongpo123)
 - `table2excel` 将原生 table 文件转化为 excel [@chendongpo123](https://github.com/chendongpo123)
+- `loadLocalFile`  加载本地文件
 
 ## 其他工具
 

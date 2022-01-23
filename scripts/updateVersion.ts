@@ -10,7 +10,7 @@ const input = process.argv
 consola.warn(input)
 const arg = input[2]
 const RELEASE = 'release'
-const BATE = 'bate'
+const BETA = 'beta'
 
 const packageJsonPath = path.resolve(__dirname, "../package.json")
 const releaseJsonPath = path.resolve(__dirname, "../dist/package.json")
@@ -21,10 +21,10 @@ const version: string = packageJson.version
 
 consola.success("当前版本号:", version)
 
-const [main, secondary, correct, bate, bateNumber] = version.split(/\.|-/) as [number, number, number, string, number]
+const [main, secondary, correct, beta, bateNumber] = version.split(/\.|-/) as [number, number, number, string, number]
 
 
-consola.log(arg, BATE === 'bate')
+consola.log(arg, BETA === 'beta')
 function createPackage() {
     const pkg = { ...packageJson }
     //正式版逻辑, 如果为测试版本直接移除测试版本号
@@ -43,13 +43,13 @@ function createPackage() {
             }
         }
         pkg.version = [newMain, newSecondary, newCorrect].join('.')
-    } else if (arg === BATE) {
+    } else if (arg === BETA) {
         let [newMain, newSecondary, newCorrect, newBateNumber] = [main, secondary, correct, bateNumber]
 
         newBateNumber = Number(newBateNumber || 0) + 1
-        pkg.version = [newMain, newSecondary, newCorrect].join('.') + `-${BATE}.${newBateNumber}`
+        pkg.version = [newMain, newSecondary, newCorrect].join('.') + `-${BETA}.${newBateNumber}`
     } else {
-        consola.error(`错误的选项${arg}, 只能指定`, BATE, RELEASE)
+        consola.error(`错误的选项${arg}, 只能指定`, BETA, RELEASE)
         return null
     }
 

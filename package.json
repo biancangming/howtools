@@ -1,11 +1,11 @@
 {
   "name": "howtools",
-  "version": "0.2.0-bate.2",
+  "version": "0.2.1-beta.3",
   "description": "a simple tool",
   "main": "dist/index.js",
   "scripts": {
     "build": "npx rollup -c",
-    "update:bate-version": "npx ts-node ./scripts/updateVersion.ts bate",
+    "update:beta-version": "npx ts-node ./scripts/updateVersion.ts beta",
     "update:release-version": "npx ts-node ./scripts/updateVersion.ts release",
     "update:publish": "npx ts-node ./scripts/publish.ts",
     "dev:docs": "npm run register:components --componentsDir=demo && vitepress dev docs",

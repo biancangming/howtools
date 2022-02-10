@@ -18,6 +18,13 @@
     "type": "git",
     "url": "git@github.com:biancangming/howtools.git"
   },
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.cjs",
+      "types": "./index.d.ts"
+    }
+  },
   "keywords": [],
   "author": "biancangming",
   "license": "ISC",
@@ -26,6 +33,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.9.1",
+    "axios": "^0.25.0",
     "consola": "^2.15.3",
     "cross-env": "^6.0.3",
     "esbuild-register": "^3.0.0",

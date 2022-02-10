@@ -1,7 +1,7 @@
 //对象相关操作
 
 type Key = string | number | symbol
-type UnknowObj = Record<Key, any>
+export type UnknowObj = Record<Key, any>
 
 /**
  * @param  {UnknowObj} obj

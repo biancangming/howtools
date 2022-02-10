@@ -1,6 +1,7 @@
 import { typeOf, isRegExp, isNumber, isEmpty } from './type';
 import { debounce } from './util';
 import { md5 } from './md5';
+import { Base64 } from './base64'
 
 //测试防抖函数
 
@@ -47,3 +48,9 @@ console.log("undefined is == >",isEmpty(undefined))
 //MD5 校验
 console.log("===================MD5 校验测试=============================")
 console.log(md5("123456"))
+
+//Base64 编码
+console.log("===================Base64 校验测试=============================")
+let base64 = new Base64()
+const imgUrl = 'M00/00/7A/rBABFWIEx1OAAMRSAAAgbEov6ck276.jpg'
+console.log(base64.encode(imgUrl))

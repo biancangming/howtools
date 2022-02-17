@@ -1,6 +1,9 @@
 # howtools
 
-> 好工具，一个力求简单的 js 工具库
+> 好工具，一个力求简单的 js 工具库，
+
+- 支持 webpack vite 
+- typescript 实现
 
 # 安装方式
 
@@ -17,6 +20,7 @@
 
 - `firstToUpper` 首字母大写
 - `firstToLower` 首字母小写
+- `strReverse` 字符串翻转
 
 #### 数组处理
 
@@ -26,6 +30,7 @@
 - `arrSum` 数组求和，支持对象数组/一般数组 [@chendongpo123](https://github.com/chendongpo123)
 - `arrGroupBy` 数组分组，支持对象数组/一般数组 [@chendongpo123](https://github.com/chendongpo123)
 - `arrMedian` 数组求中位数
+- `arrMerge` 多个数组进行合并
 
 #### 对象操作
 
@@ -82,19 +87,24 @@
 - `numberAndWordReg` 数字字母正则
 - `idCard1Reg` 一代身份证
 - `idCard2Reg` 二代身份证
+- `taxReg` 税号
 
 #### dom 相关
 
 - `addResizeListener` 添加 dom 监听
 - `removeResizeListener` 移除 dom 监听
 
-#### 其他
+#### 其他util
 
 - `md5` 生成一个 md5 字符串
 - `uuid` 生成一个 uuid
+- `Base64` base64 编码 encode 解码 decode
 - `isJSON` 判断是否为 json 字符串
 - `randomColor` 随机十六进制颜色
 - `isBrowser` 判断是否为浏览器环境
+- `copyToClipboard` 复制文本到剪贴板(浏览器环境)
+- `isDarkMode` 浏览器是否处于暗黑模式
+- `getSelectedText` 获取当前页面鼠标选中的文本
 
 
 ## 支持

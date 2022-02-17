@@ -131,3 +131,11 @@ export function arrSplit<T = any>(arr: T[], num = 0): T[][] {
     let groupSize = Math.ceil(arr.length / num);
     return arrChunk<T>(arr, groupSize);
 }
+
+/**
+ * @param  {T[][]} ...args 传入多个数组
+ * @description 将多个数组进行合并
+ */
+export function arrMerge<T = any>(...args: T[][]) {
+    return args.reduce((previousValue, currentValue) => [...previousValue, ...currentValue])
+}

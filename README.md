@@ -87,7 +87,7 @@
 - `numberAndWordReg` 数字字母正则
 - `idCard1Reg` 一代身份证
 - `idCard2Reg` 二代身份证
-- `taxReg` 税号
+- `taxReg` 税号 [@yangrui07](https://github.com/yangrui07)
 
 #### dom 相关
 
@@ -98,7 +98,7 @@
 
 - `md5` 生成一个 md5 字符串
 - `uuid` 生成一个 uuid
-- `Base64` base64 编码 encode 解码 decode
+- `Base64` base64 编码 encode 解码 decode [@yangrui07](https://github.com/yangrui07)
 - `isJSON` 判断是否为 json 字符串
 - `randomColor` 随机十六进制颜色
 - `isBrowser` 判断是否为浏览器环境

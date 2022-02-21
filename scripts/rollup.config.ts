@@ -1,9 +1,10 @@
-import fs from 'fs'
-
 import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild'
 import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
 import type { RollupOptions } from 'rollup'
+import path from 'path';
+
+const utilPath = path.join(__dirname, '../src/utils/util.ts')
 
 const configs: RollupOptions[] = []
 
@@ -11,7 +12,9 @@ const externals = [
     "resize-observer-polyfill"
 ]
 
-const esbuildPlugin = esbuild()
+const esbuildPlugin = esbuild({
+    target: ["es6"]
+})
 
 const dtsPlugin = [
     dts(),
@@ -66,6 +69,12 @@ configs.push(
         plugins: [
             esbuildPlugin
         ],
+        moduleContext: (id: string) => {
+            // 此处修复防抖节流函数的this原样输出，如果util this用于其它意图需要考虑修改此处
+            if (id === utilPath) {
+                return "this"
+            }
+        }
     },
     {
         input,

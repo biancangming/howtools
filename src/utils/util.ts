@@ -139,12 +139,12 @@ export function copyToClipboard(text: string) {
 /**
  * @description 检测当前的环境是否是黑暗模式，它是一个布尔值
  */
-export const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+export const isDarkMode = isBrowser && window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)').matches : false
 
 
 /**
  * @description 获取当前页面选中的文本
  */
-export const getSelectedText = () => window.getSelection().toString();
+export const getSelectedText = () => isBrowser ? window.getSelection().toString() : "";
 
 

@@ -5,10 +5,10 @@ for (const [key, val] of objEntries(obj)) {
     console.log(key, val)
 }
 console.log("=========给对象创建默认值===============")
-const fix = { c: '1' }
+const fix = { c: '1', d: '2' }
 interface Obj {
     a: string,
     b: string,
     c: undefined | number
 }
-console.log(objDefVal<Obj>(obj, fix))
+console.log(objDefVal<Obj>(obj, fix), obj)

@@ -40,7 +40,6 @@ export function objDefVal<T extends UnknowObj>(origin: UnknowObj = {}, fix: Unkn
     const targetObj: UnknowObj = {}
     for (const [key] of objEntries(origin)) targetObj[key] = fix[key] ?? origin[key]
     if (isFixSource) {
-        console.log({ targetObj })
         return Object.assign(origin, targetObj)
     }
     return targetObj

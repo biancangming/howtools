@@ -31,17 +31,17 @@ export function objEntries(obj: UnknowObj) {
 }
 
 /**
- * @param  {UnknowObj} origin 原始对象
- * @param  {UnknowObj} fix? 修复默认值对象
+ * @param  {UnknowObj} target 原始对象
+ * @param  {UnknowObj} source 修复默认值对象
  * @param  isFixSource ? 是否修改源数据
  * @description 给对象创建默认值
  */
-export function objDefVal<T extends UnknowObj>(origin: UnknowObj = {}, fix: UnknowObj = {}, isFixSource = true): T {
-    const targetObj: UnknowObj = {}
-    for (const [key] of objEntries(origin)) targetObj[key] = fix[key] ?? origin[key]
+export function objDefVal<T extends UnknowObj>(target: UnknowObj = {}, source: UnknowObj = {}, isFixSource = true): T {
+    const _targetObj: UnknowObj = {}
+    for (const [key] of objEntries(target)) _targetObj[key] = source[key] ?? target[key]
     if (isFixSource) {
-        return Object.assign(origin, targetObj)
+        return Object.assign(target, _targetObj)
     }
-    return targetObj
+    return _targetObj
 }
 

@@ -5,7 +5,7 @@ for (const [key, val] of objEntries(obj)) {
     console.log(key, val)
 }
 console.log("=========给对象创建默认值===============")
-const fix = { c: '1', d: '2' }
+const fix = { c: '1' }
 interface Obj {
     a: string,
     b: string,

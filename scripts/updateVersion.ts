@@ -61,7 +61,7 @@ function createPackage() {
 function release(pkg) {
     if (!pkg) return
     writeFileSync(packageJsonPath, JSON.stringify(pkg, null, '  ')); //更新package.json
-    writeFileSync(releaseJsonPath, JSON.stringify(pkg, null, '  ')); //更新发布的package.json
+    writeFileSync(releaseJsonPath, JSON.stringify({ ...pkg, scripts: {} }, null, '  ')); //更新发布的package.json
     consola.warn(`已更新版本号为===> ${pkg.version}`)
 }
 

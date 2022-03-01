@@ -1,4 +1,7 @@
-import { isFunction } from "../utils/type";
+import { isFunction, isEmpty } from '../utils/type';
+import { deepClone } from './clone';
+
+type callbackFunc<T> = (data: T, idx?: number) => any;
 
 /**
  * @param  {T[]} arr 对象的数组
@@ -8,7 +11,6 @@ import { isFunction } from "../utils/type";
 export function columnData<T = unknown>(arr: T[], key: string) {
     return arr.map(it => it[key])
 }
-
 
 interface rows2columnsOptions {
     newColumns?: string[],//新列顺序
@@ -65,8 +67,6 @@ export function arrSum<T>(arr: T[], key?: string): number {
     }, 0)
 }
 
-
-type callbackFunc<T> = (data: T, idx?: number) => any;
 /**
  * 数组分组
  * @param arr 对象数组 或者 基础类型数组
@@ -138,4 +138,61 @@ export function arrSplit<T = any>(arr: T[], num = 0): T[][] {
  */
 export function arrMerge<T = any>(...args: T[][]) {
     return args.reduce((previousValue, currentValue) => [...previousValue, ...currentValue])
+}
+
+interface ArrToTreeOptions {
+    id?: string;//主键
+    pid?: string; //父节点键
+    children?: string;//字集数组的键
+}
+/**
+ * @param  {T[]} arr 原始数组
+ * @param  {ArrToTreeOptions} options 替换列表中对应的主键、关联键、子数据集
+ * @description 数组转换成树结构
+ */
+export function arrToTree<T = any>(arr: T[], options: ArrToTreeOptions): T[] {
+    const { id = 'id', pid = 'pid', children = 'children' } = options || {}
+
+    const _group = arrGroupBy(arr, pid)
+
+    const top = _group['null'] || _group['undefined'] || _group['']
+
+    if (Object.keys(_group).length <= 1) {
+        console.warn("howtools, Check that your settings are correct , id / pid / children")
+        return top
+    }
+
+    /**
+     * @param  {any[]} _arr 上一层数据组成的数组
+     */
+    const _setChildren = (_arr) => {
+        for (const _item of _arr) {
+            _item[children] = _group[_item[id]] || []
+            _setChildren(_item[children])
+        }
+    }
+
+    _setChildren(top)
+    return top
+}
+
+/**
+ * @param  {T[]} arr 传入的数组
+ * @param  {Pick<ArrToTreeOptions} options?
+ * @param  {} 'children'> 替换列表中对应的主键、关联键、子数据集
+ */
+export function treeToArr<T>(arr: T[], options?: Pick<ArrToTreeOptions, 'children'>): T[] {
+    const { children = 'children' } = options || {}
+    const result = []
+    const _getChildren = (_arr) => {
+        for (const _item of _arr) {
+            const childrenArr = _item[children]
+            if (!isEmpty(childrenArr)) _getChildren(childrenArr)
+            const backItem = deepClone(_item)
+            delete backItem[children]
+            result.push(backItem)
+        }
+    }
+    _getChildren(arr)
+    return result
 }

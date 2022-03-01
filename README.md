@@ -31,6 +31,8 @@
 - `arrGroupBy` 数组分组，支持对象数组/一般数组 [@chendongpo123](https://github.com/chendongpo123)
 - `arrMedian` 数组求中位数
 - `arrMerge` 多个数组进行合并
+- `arrToTree` 数组转换为tree
+- `treeToArr` tree 转换为数组
 
 #### 对象操作
 

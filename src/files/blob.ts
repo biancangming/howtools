@@ -1,7 +1,7 @@
 import { isJSON, isServer } from "../utils/util"
 import { contentTypeStr } from './contentType';
 
-export function saveFileFromBlob(file: any, fileName: string, contentType: contentTypeStr | string = "application/*") {
+export function saveFileFromBlob(file: BlobPart, fileName: string, contentType: contentTypeStr | string = "application/*") {
     if (isServer) {
         throw new Error("this methods is running in browser")
     }

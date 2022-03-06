@@ -18,3 +18,10 @@ export function firstToLower(str: string) {
 export function strReverse(str: string) {
     str.split('').reverse().join('');
 }
+
+/**
+ * @param  {string} str 移除所有的空格
+ */
+export function strRemoveSpace(str: string) {
+    return str.replace(/\ +/g, "")
+}

@@ -4,6 +4,7 @@ export * from "./type"
 export * from "./resizeObserver"
 export * from "./regex"
 export * from "./dom"
+export * from "./base64"
 
 export * as util from "./util"
 export * as md5 from './md5';

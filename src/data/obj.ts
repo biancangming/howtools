@@ -6,6 +6,7 @@ export type UnknowObj = Record<Key, any>
 /**
  * @param  {UnknowObj} obj
  * @description 返回一个对象的迭代器
+ * @deprecated 建议用ES6 Object.entries 代替
  * for (const [key, value] of createObjIterator(origin)){
  *     
  * }
@@ -38,7 +39,7 @@ export function objEntries(obj: UnknowObj) {
  */
 export function objDefVal<T extends UnknowObj>(target: UnknowObj = {}, source: UnknowObj = {}, isFixSource = true): T {
     const _targetObj: UnknowObj = {}
-    for (const [key] of objEntries(target)) _targetObj[key] = source[key] ?? target[key]
+    for (const [key] of Object.entries(target)) _targetObj[key] = source[key] ?? target[key]
     if (isFixSource) {
         return Object.assign(target, _targetObj)
     }

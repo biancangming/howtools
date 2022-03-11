@@ -32,7 +32,9 @@
 - `arrMedian` 数组求中位数
 - `arrMerge` 多个数组进行合并
 - `arrToTree` 数组转换为tree
-- `treeToArr` tree 转换为数组
+- `treeToArr` tree 转换为数组 
+- `arrSort` 数组排序，支持对象数组/一般数组 [@chendongpo123](https://github.com/chendongpo123)
+
 
 #### 对象操作
 

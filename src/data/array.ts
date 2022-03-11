@@ -196,3 +196,25 @@ export function treeToArr<T>(arr: T[], options?: Pick<ArrToTreeOptions, 'childre
     _getChildren(arr)
     return result
 }
+
+/**
+ * 求数组排序
+ * @param arr 数组
+ * @param key 列名称
+ * @param sort 排序方式 asc 升序 desc 降序 默认升序
+ */
+export function arrSort<T>(arr: T[], key?: string, sort = 'asc' as 'desc' | 'asc') {
+    if(arr && arr.length) {
+        arr.sort(((a, b) => {
+            let aValue = key ? a[key] : a;
+            let bValue = key ? b[key] : b;
+            if(aValue > bValue) {
+                return sort === 'desc' ? -1 : 1;
+            }else if(aValue < bValue) {
+                return sort === 'desc' ? 1 : -1;
+            }else {
+                return 0;
+            }
+        }))
+    }
+}

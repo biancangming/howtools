@@ -1,4 +1,4 @@
-import { rows2columns, unique, arrMedian, columnData, arrSum, arrGroupBy, arrToTree, treeToArr } from './array';
+import { rows2columns, unique, arrMedian, columnData, arrSum, arrGroupBy, arrToTree, treeToArr, arrSort} from './array';
 const obja = [
     {
         age: "18",
@@ -68,3 +68,6 @@ console.log(treeArr)
 const lineArr = treeToArr(treeArr)
 
 console.log(JSON.stringify(lineArr))
+
+arrSort(obja, 'age')
+console.log(obja, '排序')

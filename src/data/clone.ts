@@ -1,5 +1,4 @@
 import { typeOf } from '../utils/type';
-import { objEntries } from './obj';
 
 /**
  * @param  {any} data
@@ -17,7 +16,7 @@ export function shallowClone<T = unknown>(data: any): T {
             break;
         case 'Object':
             obj = {};
-            for (const [key, val] of objEntries(data)) {
+            for (const [key, val] of Object.entries(data)) {
                 obj[key] = val
             }
             break;
@@ -42,7 +41,7 @@ export function deepClone<T>(data: any): T {
             break;
         case 'Object':
             obj = {};
-            for (const [key, val] of objEntries(data)) {
+            for (const [key, val] of Object.entries(data)) {
                 obj[key] = deepClone(val)
             }
             break;

@@ -49,6 +49,7 @@
 
 ### src/files/blob
 
+- `createLocalURL` Blob 创建文件blob url，一般用于预览流文件
 - `saveFileFromBlob` Blob 流保存为文件
 - `blob2Json` Blob 文件转 json
 - `html2word` 将 html 文件转化为 word [@chendongpo123](https://github.com/chendongpo123)

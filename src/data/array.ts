@@ -200,21 +200,29 @@ export function treeToArr<T>(arr: T[], options?: Pick<ArrToTreeOptions, 'childre
 /**
  * 求数组排序
  * @param arr 数组
- * @param key 列名称
+ * @param key 列名称, 数组或字符串不能为null
  * @param sort 排序方式 asc 升序 desc 降序 默认升序
  */
-export function arrSort<T>(arr: T[], key?: string, sort = 'asc' as 'desc' | 'asc') {
-    if(arr && arr.length) {
-        arr.sort(((a, b) => {
-            let aValue = key ? a[key] : a;
-            let bValue = key ? b[key] : b;
-            if(aValue > bValue) {
-                return sort === 'desc' ? -1 : 1;
-            }else if(aValue < bValue) {
-                return sort === 'desc' ? 1 : -1;
-            }else {
-                return 0;
-            }
-        }))
-    }
+export function arrSort<T extends object | string | number | symbol>(
+    arr: T[],
+    options?: { key?: T extends object ? keyof T : undefined | null; sort?: 'desc' | 'asc' }) {
+
+    if (isEmpty(arr)) return
+
+    const { key, sort = 'asc' } = options || {}
+    const MARKER = sort === 'asc' ? 1 : -1
+
+    const compareFn = ((a, b) => {
+        const aValue = key ? a[key] : a;
+        const bValue = key ? b[key] : b;
+        if (aValue > bValue) {
+            return MARKER
+        } else if (aValue < bValue) {
+            return -MARKER;
+        } else {
+            return -MARKER + MARKER;
+        }
+    })
+
+    arr.sort(compareFn)
 }

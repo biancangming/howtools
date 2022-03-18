@@ -1,6 +1,9 @@
 import { isBrowser } from './util';
 
-type TypeString = 'Number' | 'String' | 'Boolean' | 'Undefined' | 'Null' | 'Symbol' | 'Function' | 'Array' | 'Object' | 'RegExp' | 'Promise' | 'Element'
+type TypeString = 'Number' | 'String' | 'Boolean' | 'Undefined' | 'Null' | 'Symbol'
+    | 'Function' | 'Array' | 'Object' | 'RegExp' | 'Promise'
+    | 'Set' | 'WeakSet' | 'Map' | 'WeakMap'
+    | 'Element'
 
 enum TYPE {
     Number = 'Number',
@@ -11,6 +14,10 @@ enum TYPE {
     Symbol = 'Symbol',
     Function = 'Function',
     Array = 'Array',
+    Set = 'Set',
+    WeakSet = 'WeakSet',
+    Map = 'Map',
+    WeakMap = 'WeakMap',
     Object = 'Object',
     Element = 'Element',
     Promise = 'Promise',
@@ -113,6 +120,38 @@ export function isObject(target: unknown) {
  */
 export function isRegExp(target: unknown) {
     return checkType(target, TYPE.RegExp)
+}
+
+/**
+ * @param  {unknown} target 输入数据类型
+ * @description 验证是否是一个正则
+ */
+ export function isMap(target: unknown) {
+    return checkType(target, TYPE.Map)
+}
+
+/**
+ * @param  {unknown} target 输入数据类型
+ * @description 验证是否是一个正则
+ */
+ export function isWeakMap(target: unknown) {
+    return checkType(target, TYPE.WeakMap)
+}
+
+/**
+ * @param  {unknown} target 输入数据类型
+ * @description 验证是否是一个正则
+ */
+ export function isSet(target: unknown) {
+    return checkType(target, TYPE.Set)
+}
+
+/**
+ * @param  {unknown} target 输入数据类型
+ * @description 验证是否是一个正则
+ */
+ export function isWeakSet(target: unknown) {
+    return checkType(target, TYPE.WeakSet)
 }
 
 /**

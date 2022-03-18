@@ -90,7 +90,7 @@ export function table2excel(tableContent: string, fileName = `${new Date().getTi
  * @description 上传本地文件
  */
 interface LoadFileOption { accept: string, multiple: boolean }
-export function loadLocalFile(opt?: LoadFileOption): Promise<FileList> {
+export function loadLocalFile(opt?: Partial<LoadFileOption>): Promise<FileList> {
     if (!opt) {
         opt = { accept: "*", multiple: false }
     } else {

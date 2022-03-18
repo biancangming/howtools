@@ -100,7 +100,7 @@ export function copyToClipboard(text: string) {
             }
 
             // https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/clipboard
-            if (!navigator?.clipboard) {
+            if (navigator?.clipboard) {
                 navigator.clipboard.writeText(text).then(res => {
                     resolve(res)
                 }).catch(err => {

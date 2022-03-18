@@ -8,9 +8,10 @@ type callbackFunc<T> = (data: T, idx?: number) => any;
  * @param  {string} key 列名称
  * @description 提取数组某一行
  */
-export function columnData<T = unknown>(arr: T[], key: string) {
+export function columnData<T extends object>(arr: T[], key: keyof T) {
     return arr.map(it => it[key])
 }
+
 
 interface rows2columnsOptions {
     newColumns?: string[],//新列顺序
@@ -21,13 +22,13 @@ interface rows2columnsOptions {
  * @param  {T[]} arr
  * @param  {rows2columnsOptions} columns
  */
-export function rows2columns<T = unknown>(arr: T[], columns: rows2columnsOptions = {}) {
+export function rows2columns<T extends object>(arr: T[], columns: rows2columnsOptions = {}) {
     const ret = []
     const _obj = arr[0]
     const originCol = columns.originColumns || Object.keys(_obj)
     originCol.forEach((key) => {
         const newCol = columns.newColumns || [];
-        const newArr = columnData(arr, key)
+        const newArr = columnData(arr, key as keyof T)
         if (newCol.length == 0) {
             ret.push(Object.assign({}, newArr))
         }
@@ -59,11 +60,12 @@ export function unique<T = unknown>(arr: T[], key?: string) {
  * @param arr 对象数组 或者 数字数组
  * @param key 列名称
  */
-export function arrSum<T>(arr: T[], key?: string): number {
-    const tempArr = key ? columnData(arr, key) : arr;
-    return tempArr.reduce((temp, cur) => {
-        if (isNaN(cur)) throw new Error(`非数字不能进行求和计算!, 数组: ${tempArr}, key: ${key}`)
-        return temp + Number(cur)
+export function arrSum<T extends object>(arr: T[], key?: T extends object ? keyof T : null): number {
+    const tempArr = (key ? columnData(arr, key) : arr) as unknown[] as number[];
+
+    return tempArr.reduce((previousValue, currentValue) => {
+        if (isNaN(previousValue)) throw new Error(`非数字不能进行求和计算!, 数组: ${tempArr}, key: ${key}`)
+        return previousValue + currentValue
     }, 0)
 }
 
@@ -72,8 +74,9 @@ export function arrSum<T>(arr: T[], key?: string): number {
  * @param arr 对象数组 或者 基础类型数组
  * @param key 列名称 或者 函数
  */
-export function arrGroupBy<T>(arr: T[], key?: string | callbackFunc<T>): Object {
-    const ret = {}, isFunc = isFunction(key);
+type GroupByCallbackfn<T> = (value: T, index: number) => boolean
+export function arrGroupBy<T>(arr: T[], key?: T extends object ? keyof T | GroupByCallbackfn<T> : GroupByCallbackfn<T>) {
+    const ret = {} as Record<string, T[]>, isFunc = isFunction(key);
     arr.forEach((o, idx) => {
         const value = key ? isFunc ? (key as callbackFunc<T>)(o, idx) : o[key as string] : o;
         ret.hasOwnProperty(value) ? ret[value].push(o) : ret[value] = [o];
@@ -109,7 +112,7 @@ export function arrMedian(arr: number[]) {
  * @returns T
  * @description 将数组分割成大小为 size 的数组，组成新数组
  */
-export function arrChunk<T = any>(arr: T[], size = 0): T[][] {
+export function arrChunk<T extends object>(arr: T[], size = 0): T[][] {
     if (size == 0) return [arr]
     let chunks = [];
     for (let i = 0; i < arr.length; i = i + size) {
@@ -125,7 +128,7 @@ export function arrChunk<T = any>(arr: T[], size = 0): T[][] {
  * @returns T
  * @description 将数组分为num等份
  */
-export function arrSplit<T = any>(arr: T[], num = 0): T[][] {
+export function arrSplit<T extends object>(arr: T[], num = 0): T[][] {
     if (arr.length <= 0) return [arr];
 
     let groupSize = Math.ceil(arr.length / num);
@@ -136,24 +139,24 @@ export function arrSplit<T = any>(arr: T[], num = 0): T[][] {
  * @param  {T[][]} ...args 传入多个数组
  * @description 将多个数组进行合并
  */
-export function arrMerge<T = any>(...args: T[][]) {
+export function arrMerge<T extends object>(...args: T[][]) {
     return args.reduce((previousValue, currentValue) => [...previousValue, ...currentValue])
 }
 
-interface ArrToTreeOptions {
-    id?: string;//主键
-    pid?: string; //父节点键
-    children?: string;//字集数组的键
+interface ArrToTreeOptions<T> {
+    id?: keyof T;//主键
+    pid?: keyof T;//父节点键
+    children?: keyof T;//字集数组的键
 }
 /**
  * @param  {T[]} arr 原始数组
  * @param  {ArrToTreeOptions} options 替换列表中对应的主键、关联键、子数据集
  * @description 数组转换成树结构
  */
-export function arrToTree<T = any>(arr: T[], options: ArrToTreeOptions): T[] {
-    const { id = 'id', pid = 'pid', children = 'children' } = options || {}
+export function arrToTree<T extends object>(arr: T[], options: ArrToTreeOptions<T>): T[] {
+    const { id = "id", pid = "pid", children = "children" } = options
 
-    const _group = arrGroupBy(arr, pid)
+    const _group = arrGroupBy(arr, pid as any)
 
     const top = _group['null'] || _group['undefined'] || _group['']
 
@@ -181,7 +184,7 @@ export function arrToTree<T = any>(arr: T[], options: ArrToTreeOptions): T[] {
  * @param  {Pick<ArrToTreeOptions} options?
  * @param  {} 'children'> 替换列表中对应的主键、关联键、子数据集
  */
-export function treeToArr<T>(arr: T[], options?: Pick<ArrToTreeOptions, 'children'>): T[] {
+export function treeToArr<T>(arr: T[], options?: Pick<ArrToTreeOptions<T>, 'children'>): T[] {
     const { children = 'children' } = options || {}
     const result = []
     const _getChildren = (_arr) => {
@@ -220,7 +223,7 @@ export function arrSort<T extends object | string | number | symbol>(
         } else if (aValue < bValue) {
             return -MARKER;
         } else {
-            return -MARKER + MARKER;
+            return MARKER - MARKER;
         }
     })
 

@@ -13,25 +13,34 @@ function resizeHandler(entries: any[]) {
     }
 }
 
-/* istanbul ignore next */
-export function addResizeListener(element: any, fn: () => any) {
-    if (isServer) {
-        throw new Error("当前方法不适用于服务器环境")
-    };
-    if (!element.__resizeListeners__) {
-        element.__resizeListeners__ = [];
-        element.__ro__ = new ResizeObserver(resizeHandler);
-        element.__ro__.observe(element);
-    }
-    element.__resizeListeners__.push(fn);
+
+interface ResizeElement extends HTMLDivElement {
+    __resizeListeners__: Function[];
+    __ro__: any
 }
 
 /* istanbul ignore next */
-export function removeResizeListener(element: any, fn: () => any) {
-    if (!element || !element.__resizeListeners__) return;
-    element.__resizeListeners__.splice(element.__resizeListeners__.indexOf(fn), 1);
-    if (!element.__resizeListeners__.length) {
-        element.__ro__.disconnect();
+export function addResizeListener(element: HTMLDivElement, fn: () => any) {
+    if (isServer) {
+        throw new Error("当前方法不适用于服务器环境")
+    };
+
+    const el = element as ResizeElement;
+    if (!el.__resizeListeners__) {
+        el.__resizeListeners__ = [];
+        el.__ro__ = new ResizeObserver(resizeHandler);
+        el.__ro__.observe(el);
+    }
+    el.__resizeListeners__.push(fn);
+}
+
+/* istanbul ignore next */
+export function removeResizeListener(element: HTMLDivElement, fn: () => any) {
+    const el = element as ResizeElement;
+    if (!el || !el.__resizeListeners__) return;
+    el.__resizeListeners__.splice(el.__resizeListeners__.indexOf(fn), 1);
+    if (!el.__resizeListeners__.length) {
+        el.__ro__.disconnect();
     }
 }
 

@@ -1,3 +1,5 @@
+import { Base64 } from '../utils/base64';
+import { isJSON } from '../utils/util';
 //对象相关操作
 
 type Key = string | number | symbol
@@ -46,3 +48,21 @@ export function objDefVal<T extends UnknowObj>(target: UnknowObj = {}, source: U
     return _targetObj
 }
 
+/**
+ * @param  {T} data 传入的对象
+ */
+export function objToBase64<T extends object>(data: T) {
+    return new Base64().encode(JSON.stringify(data))
+}
+
+/**
+ * @param  {string} data 传入base64数据
+ * @returns Partial
+ */
+export function base64Toobj<T extends object>(data: string): Partial<T> {
+    const restJson = new Base64().decode(data)
+    if (isJSON(restJson)) {
+        return JSON.parse(restJson)
+    }
+    return {}
+}

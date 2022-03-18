@@ -38,8 +38,9 @@ console.log(arrSum([1, 2, 34, 5, 6, 7, 2, 1]))
 console.log(arrSum(obja, "age"))
 
 console.log("==============数组分组=====================")
-console.log(arrGroupBy([1, 2, 34, 5, 6, 7, 2, 1]))
-console.log(arrGroupBy(obja, "age"))
+const na = [1, 2, 34, 5, 6, 7, 2, 1]
+console.log(arrGroupBy(na))
+console.log(arrGroupBy(obja, 'age'))
 
 console.log("==============数组中位数=====================")
 const orgArr = [1, 10, 30, 2, 5, 6, 7]
@@ -58,8 +59,8 @@ const arr = [
 console.log(new Date())
 const treeArr = arrToTree(arr,
     {
-        id: "menuId",
-        pid: "parentMenuId"
+        id: 'menuId',
+        pid: 'parentMenuId',
     }
 )
 

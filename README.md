@@ -21,6 +21,7 @@
 - `firstToUpper` 首字母大写
 - `firstToLower` 首字母小写
 - `strReverse` 字符串翻转
+- `strRemoveSpace` 移除所有的空格
 
 #### 数组处理
 
@@ -40,9 +41,12 @@
 
 - `objEntries` 对象for ... of ... 循环扩展
 - `objDefVal`  对象设置默认值, 不改变原对象
+- `objToBase64`  对象转base64
+- `base64Toobj`  base64 转对象
 
 #### 拷贝
 
+- `shallowClone` 浅拷贝
 - `deepClone` 深拷贝
 
 ## 文件操作
@@ -78,6 +82,10 @@
 - `isObject` 验证是否是一个 Object
 - `isRegExp` 验证是否是一个正则
 - `isPromise` 验证是否是一个 Promise
+- `isMap` 验证是否是一个 Map
+- `isWeakMap` 验证是否是一个 WeakMap
+- `isSet` 验证是否是一个 Set
+- `isWeakSet` 验证是否是一个 WeakSet
 - `isElement` 验证是否是一个 dom 元素
 - `isEmpty` 验证是否是一个空的对象，支持 `"",null,undefined,{},Array,Map,set`
 
@@ -89,6 +97,7 @@
 - `mobilePhoneReg` 手机号正则
 - `emailReg` 邮箱正则
 - `naturalNumberReg` 自然数
+- `twoDecimalReg` 两位小数正则，不以0开头
 - `numberAndWordReg` 数字字母正则
 - `idCard1Reg` 一代身份证
 - `idCard2Reg` 二代身份证

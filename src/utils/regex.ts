@@ -17,6 +17,9 @@ export const emailReg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
 //自然数
 export const naturalNumberReg = /^[1-9]\d*$/
 
+//不以0开头保留两位小数
+export const twoDecimalReg = /^[1-9]\d*\.\d{1,2}/
+
 //数字字母正则
 export const numberAndWordReg = /^[0-9a-zA-Z]*$/
 

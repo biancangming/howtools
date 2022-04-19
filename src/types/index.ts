@@ -1,4 +1,3 @@
-
 // 可为null
 export declare type Nullable<T> = T | null;
 

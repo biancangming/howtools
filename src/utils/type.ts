@@ -39,7 +39,7 @@ export const checkType = (target: unknown, type: TYPE) => typeOf(target) == type
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个数字
  */
-export function isNumber(target: unknown) {
+export function isNumber(target: unknown): target is number {
     return checkType(target, TYPE.Number)
 }
 
@@ -47,7 +47,7 @@ export function isNumber(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个字符串
  */
-export function isString(target: unknown) {
+export function isString(target: unknown): target is string {
     return checkType(target, TYPE.String)
 }
 
@@ -55,7 +55,7 @@ export function isString(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个布尔值
  */
-export function isBoolean(target: unknown) {
+export function isBoolean(target: unknown): target is boolean {
     return checkType(target, TYPE.Boolean)
 }
 
@@ -63,14 +63,15 @@ export function isBoolean(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个Undefined
  */
-export function isUndefined(target: unknown) {
+export function isUndefined(target: unknown): target is undefined {
     return checkType(target, TYPE.Undefined)
 }
+
 /**
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个Null
  */
-export function isNull(target: unknown) {
+export function isNull(target: unknown): target is null {
     return checkType(target, TYPE.Null)
 }
 
@@ -78,7 +79,7 @@ export function isNull(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个Symbol
  */
-export function isSymbol(target: unknown) {
+export function isSymbol(target: unknown): target is symbol {
     return checkType(target, TYPE.Symbol)
 }
 
@@ -86,7 +87,7 @@ export function isSymbol(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个Promise
  */
-export function isPromise(target: unknown) {
+export function isPromise<T>(target: Promise<T> | unknown): target is Promise<T> {
     return checkType(target, TYPE.Promise)
 }
 
@@ -94,7 +95,7 @@ export function isPromise(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个函数
  */
-export function isFunction(target: unknown) {
+export function isFunction(target: unknown): target is (...[]) => unknown {
     return checkType(target, TYPE.Function)
 }
 
@@ -102,7 +103,7 @@ export function isFunction(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个Array
  */
-export function isArray(target: unknown) {
+export function isArray(target: unknown): target is unknown[] {
     return checkType(target, TYPE.Array)
 }
 
@@ -110,7 +111,7 @@ export function isArray(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个Object
  */
-export function isObject(target: unknown) {
+export function isObject(target: unknown): target is object {
     return checkType(target, TYPE.Object)
 }
 
@@ -118,7 +119,7 @@ export function isObject(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个正则
  */
-export function isRegExp(target: unknown) {
+export function isRegExp(target: unknown): target is RegExp {
     return checkType(target, TYPE.RegExp)
 }
 
@@ -126,7 +127,7 @@ export function isRegExp(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个正则
  */
- export function isMap(target: unknown) {
+export function isMap(target: unknown): target is Map<unknown, unknown> {
     return checkType(target, TYPE.Map)
 }
 
@@ -134,15 +135,16 @@ export function isRegExp(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个正则
  */
- export function isWeakMap(target: unknown) {
+export function isWeakMap<K, V>(target: unknown): target is WeakMap<object, unknown> {
     return checkType(target, TYPE.WeakMap)
 }
+
 
 /**
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个正则
  */
- export function isSet(target: unknown) {
+export function isSet(target: unknown): target is Set<unknown> {
     return checkType(target, TYPE.Set)
 }
 
@@ -150,7 +152,7 @@ export function isRegExp(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个正则
  */
- export function isWeakSet(target: unknown) {
+export function isWeakSet(target: unknown): target is WeakSet<object> {
     return checkType(target, TYPE.WeakSet)
 }
 
@@ -158,7 +160,7 @@ export function isRegExp(target: unknown) {
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个dom元素
  */
-export function isElement(target: unknown) {
+export function isElement(target: unknown): target is Element {
     return checkType(target, TYPE.Element)
 }
 
@@ -166,7 +168,7 @@ export function isElement(target: unknown) {
  * @param  {unknown} target 输入对象
  * @description 验证是否是一个空的对象，支持 "",null,undefined,{},[]
  */
-export function isEmpty(target: unknown) {
+export function isEmpty(target: unknown): target is null | unknown[] | object | Set<unknown> | Map<unknown, unknown> {
     //验证是否是一个空对象
     if (isObject(target)) return Object.keys(target).length == 0
     //验证是否是一个空数组

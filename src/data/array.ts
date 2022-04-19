@@ -210,7 +210,7 @@ export function arrSort<T extends object | string | number | symbol>(
     arr: T[],
     options?: { key?: T extends object ? keyof T : undefined | null; sort?: 'desc' | 'asc' }) {
 
-    if (isEmpty(arr)) return
+    if (isEmpty(arr)) return []
 
     const { key, sort = 'asc' } = options || {}
     const MARKER = sort === 'asc' ? 1 : -1

@@ -168,7 +168,7 @@ export function isElement(target: unknown): target is Element {
  * @param  {unknown} target 输入对象
  * @description 验证是否是一个空的对象，支持 "",null,undefined,{},[]
  */
-export function isEmpty(target: unknown): target is null | unknown[] | object | Set<unknown> | Map<unknown, unknown> {
+export function isEmpty(target: unknown): target is null | 0 {
     //验证是否是一个空对象
     if (isObject(target)) return Object.keys(target).length == 0
     //验证是否是一个空数组

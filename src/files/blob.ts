@@ -1,16 +1,25 @@
 import { isJSON, isServer } from "../utils/util"
 import { contentTypeStr } from './contentType';
 
-export function saveFileFromBlob(file: any, fileName: string, contentType: contentTypeStr | string = "application/*") {
-    if (isServer) {
-        throw new Error("this methods is running in browser")
-    }
-    const link = document.createElement("a");
+/**
+ * @param file Blob格式文件
+ * @param contentType 内容类型
+ * @description blob转化为json，常用于后端文件报错时处理
+*/
+export function createLocalURL(file: BlobPart, contentType: contentTypeStr | string = "application/*") {
     const blob = new Blob([file], {
         type: contentType,//这个是Content-Typele的type类型（https://tool.oschina.net/commons）
     });
-    const url = window.URL.createObjectURL(blob);
-    link.href = url;
+    return window.URL.createObjectURL(blob);
+}
+
+export function saveFileFromBlob(file: BlobPart, fileName: string, contentType: contentTypeStr | string = "application/*") {
+    if (isServer) {
+        throw new Error("saveFileFromBlob methods is running in browser")
+    }
+    const link = document.createElement("a");
+    const url = 
+    link.href = createLocalURL(file,fileName);
     link.download = fileName;
     link.click();
     link.remove()

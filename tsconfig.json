@@ -9,7 +9,7 @@
     "jsx": "preserve",
     "experimentalDecorators": true, /* Enable experimental support for TC39 stage 2 draft decorators. */
     "emitDecoratorMetadata": true, /* Emit design-type metadata for decorated declarations in source files. */
-    "downlevelIteration": true,/* 允许使用迭代器 */
+    "downlevelIteration": true, /* 允许使用迭代器 */
     "module": "commonjs", /* Specify what module code is generated. */
     "rootDir": "./src", /* Specify the root folder within your source files. */
     "baseUrl": "./", /* Specify the base directory to resolve non-relative module names. */
@@ -26,7 +26,8 @@
     "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */ /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
     "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
     // "strict": true, /* Enable all strict type-checking options. */                 /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true, /* Skip type checking all .d.ts files. */
+    "importHelpers": true
   },
   "include": [
     "types/*.d.ts",

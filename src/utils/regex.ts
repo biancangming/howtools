@@ -17,6 +17,9 @@ export const emailReg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
 //自然数
 export const naturalNumberReg = /^[1-9]\d*$/
 
+//不以0开头保留两位小数
+export const twoDecimalReg = /^[1-9]\d*\.\d{1,2}/
+
 //数字字母正则
 export const numberAndWordReg = /^[0-9a-zA-Z]*$/
 
@@ -26,14 +29,9 @@ export const idCard1Reg = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$
 //二代身份证正则表达式(18位)
 export const idCard2Reg = /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/
 
+//税号(15或者18或者20位字母、数字组成)
+export const taxReg = /^[A-Z0-9]{15}$|^[A-Z0-9]{18}$|^[A-Z0-9]{20}$/
 
-export const regexPattern = {
-    urlReg,
-    ipv4Reg,
-    ipv6Reg,
-    mobilePhoneReg,
-    emailReg,
-    naturalNumberReg,
-    idCard1Reg,
-    idCard2Reg
-}
+//汉字正则
+export const hanReg = /^[\u4e00-\u9fa5]+$/
+

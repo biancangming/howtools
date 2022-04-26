@@ -3,3 +3,5 @@ node_modules
 .env.development
 dist
 package-lock.json
+.vscode
+.env.local.*

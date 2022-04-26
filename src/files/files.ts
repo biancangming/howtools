@@ -1,4 +1,4 @@
-import {saveFileFromBlob} from "./blob";
+import { saveFileFromBlob } from "./blob";
 
 /**
  * html 导出 word（.doc 格式）
@@ -32,7 +32,7 @@ export function html2word(htmlContent: string, fileName = `${new Date().getTime(
         };
     }
     let fileBottom = "\n";
-    if(imgList && imgList.length) {
+    if (imgList && imgList.length) {
         for (let i = 0; i < imagesBase64.length; i++) {
             fileBottom += "--NEXT.ITEM-BOUNDARY\n";
             fileBottom += "Content-Location: " + imagesBase64[i].location + "\n";
@@ -58,7 +58,7 @@ export function html2word(htmlContent: string, fileName = `${new Date().getTime(
  * @param fileName 文件名称不含后缀
  * @param sheetName 工作表名称
  */
-export function table2excel(tableContent: string,fileName = `${new Date().getTime()}`, sheetName = 'Sheet1') {
+export function table2excel(tableContent: string, fileName = `${new Date().getTime()}`, sheetName = 'Sheet1') {
     //替换table数据和worksheet名字
     const format = function (s: string, c: Record<string, any>) {
         return s.replace(/{(\w+)}/g,
@@ -79,6 +79,36 @@ export function table2excel(tableContent: string,fileName = `${new Date().getTim
         ' }' +
         '</style>' +
         '</head><body >{table}</body></html>';
-    const ctx = {worksheet: sheetName, table: tableContent};
+    const ctx = { worksheet: sheetName, table: tableContent };
     saveFileFromBlob(format(template, ctx), `${fileName}.xls`)
+}
+
+
+/**
+ * @param  {accept:string} accept 文件类型限制
+ * @param  {boolean}} multiple 是否选择多个文件, 默认单个文件
+ * @description 上传本地文件
+ */
+interface LoadFileOption { accept: string, multiple: boolean }
+export function loadLocalFile(opt?: Partial<LoadFileOption>): Promise<FileList> {
+    if (!opt) {
+        opt = { accept: "*", multiple: false }
+    } else {
+        opt = { accept: opt.accept || "*", multiple: opt.multiple || false }
+    }
+
+    const { accept, multiple } = opt
+    return new Promise((resolve) => {
+        const iput = document.createElement("input")
+        iput.style.zIndex = '-100'
+        iput.setAttribute('type', 'file')
+        iput.setAttribute('accept', accept)
+        multiple && iput.setAttribute('multiple', 'multiple')
+        iput.click()
+        const changeFile = () => {
+            resolve(iput.files)
+            iput.remove()
+        }
+        iput.onchange = changeFile
+    })
 }

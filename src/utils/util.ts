@@ -47,6 +47,14 @@ export function isJSON(str: string) {
         }
     }
 }
+
+/**
+ * @description Promise 请求返回数据数组 
+ */
+export function promiseTo<T>(promise: Promise<T>) {
+    return promise.then(data => [data, null]).catch(err => [null, err])
+}
+
 /**
  * @description 随机的十六进制颜色 
  */

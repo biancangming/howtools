@@ -28,7 +28,10 @@ export function scriptLoader(src: string) {
  * @description 全屏或全屏退出
  */
 function Screen(mode: 'full' | 'exit') {
-  const el: any = document.documentElement;
+  let el: any = document.documentElement;
+  if(mode == 'exit'){
+    el = document
+  }
   const rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
   const cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen;
 

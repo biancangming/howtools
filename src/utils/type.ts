@@ -95,7 +95,7 @@ export function isPromise<T>(target: Promise<T> | unknown): target is Promise<T>
  * @param  {unknown} target 输入数据类型
  * @description 验证是否是一个函数
  */
-export function isFunction(target: unknown): target is (...[]) => unknown {
+export function isFunction(target: unknown): target is (...[]: unknown[]) => unknown {
     return checkType(target, TYPE.Function)
 }
 

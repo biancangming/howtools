@@ -64,7 +64,7 @@ export function arrSum<T extends object>(arr: T[], key?: T extends object ? keyo
     const tempArr = (key ? columnData(arr, key) : arr) as unknown[] as number[];
 
     return tempArr.reduce((previousValue, currentValue) => {
-        if (isNaN(previousValue)) throw new Error(`非数字不能进行求和计算!, 数组: ${tempArr}, key: ${key}`)
+        if (isNaN(previousValue)) throw new Error(`非数字不能进行求和计算!, 数组: ${tempArr}, key: ${String(key)}`)
         return previousValue + currentValue
     }, 0)
 }
@@ -229,3 +229,23 @@ export function arrSort<T extends object | string | number | symbol>(
 
     arr.sort(compareFn)
 }
+
+class howArray<T> extends Array {
+    constructor() {
+        super()
+    }
+
+    filterEmpty() {
+        this.copyWithin
+        return super.filter(Boolean)
+    }
+
+    groupBy(key?: T extends object ? keyof T | GroupByCallbackfn<T> : GroupByCallbackfn<T>) {
+        return key ? arrGroupBy(this, key) : arrGroupBy(this)
+    }
+}
+
+const ea = new howArray()
+ea.push(1, 2, 3, 4, 5, 6, 7, 8, 9, 0)
+ea.filterEmpty()
+console.log(ea)

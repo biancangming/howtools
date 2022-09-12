@@ -1,14 +1,16 @@
 /**
  * @param  {Function} fn
  * @param  {} delay=500 延迟时间默认500 ms
- *  @description 节流函数
+ * @param cb 请求回调函数，获取原函数返回值
+ * @description 节流函数
  */
-export const throttle = (fn: Function, delay = 500) => {
+export const throttle = <T, R>(fn: Function, delay = 500, cb?: (data: T) => R) => {
     let timer: NodeJS.Timeout = null
     return (...args: unknown[]) => {
         if (!timer) {
             timer = setTimeout(() => {
-                fn.apply(this, args)
+                const r = fn.apply(this, args)
+                cb(r)
                 timer = null;
             }, delay)
         }
@@ -18,14 +20,16 @@ export const throttle = (fn: Function, delay = 500) => {
 /**
  * @param  {Function} fn
  * @param  {} delay=500 延迟时间默认500 ms
+ * @param cb 请求回调函数，获取原函数返回值
  * @description 防抖函数
  */
-export const debounce = (fn: Function, delay = 500) => {
+export const debounce = <T, R>(fn: Function, delay = 500, cb?: (data: T) => R) => {
     let timer: NodeJS.Timeout = null;
     return (...args: unknown[]) => {
         if (timer) clearTimeout(timer);
         timer = setTimeout(() => {
-            fn.apply(this, args);
+            const r = fn.apply(this, args);
+            cb(r)
             timer = null;
         }, delay)
     }
@@ -52,7 +56,7 @@ export function isJSON(str: string) {
  * @description Promise 请求返回数据数组 
  */
 export function promiseTo<T>(promise: Promise<T>) {
-    return promise.then(data => [data, null]).catch(err => [null, err])
+    return promise.then(data => [data, undefined]).catch(err => [undefined, err])
 }
 
 /**

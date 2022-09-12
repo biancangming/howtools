@@ -25,3 +25,11 @@ export function strReverse(str: string) {
 export function strRemoveSpace(str: string) {
     return str.replace(/\ +/g, "")
 }
+
+/**
+ * @param  {string} name 传入文件名称
+ */
+export function fileSuffix(name: string) {
+    const lastIndex = name.lastIndexOf('.');
+    return name.substring(lastIndex, name.length);
+}

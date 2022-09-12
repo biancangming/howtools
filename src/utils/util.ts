@@ -4,7 +4,7 @@
  * @param cb 请求回调函数，获取原函数返回值
  * @description 节流函数
  */
-export const throttle = <T, R>(fn: Function, delay = 500, cb?: (data: T) => R) => {
+export const throttle = <T>(fn: Function, delay = 500, cb?: (r: T) => void) => {
     let timer: NodeJS.Timeout = null
     return (...args: unknown[]) => {
         if (!timer) {
@@ -23,7 +23,7 @@ export const throttle = <T, R>(fn: Function, delay = 500, cb?: (data: T) => R) =
  * @param cb 请求回调函数，获取原函数返回值
  * @description 防抖函数
  */
-export const debounce = <T, R>(fn: Function, delay = 500, cb?: (data: T) => R) => {
+export const debounce = <T>(fn: Function, delay = 500, cb?: (r: T) => void) => {
     let timer: NodeJS.Timeout = null;
     return (...args: unknown[]) => {
         if (timer) clearTimeout(timer);

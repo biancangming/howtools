@@ -18,12 +18,12 @@ export function saveFileFromBlob(file: BlobPart, fileName: string, contentType: 
         throw new Error("saveFileFromBlob methods is running in browser")
     }
     const link = document.createElement("a");
-    const url = 
-    link.href = createLocalURL(file,fileName);
+
+    link.href = createLocalURL(file,contentType);
     link.download = fileName;
     link.click();
     link.remove()
-    window.URL.revokeObjectURL(url);
+    window.URL.revokeObjectURL(link.href);
 }
 
 

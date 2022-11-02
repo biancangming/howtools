@@ -10,7 +10,7 @@ export const throttle = <T>(fn: Function, delay = 500, cb?: (r: T) => void) => {
         if (!timer) {
             timer = setTimeout(() => {
                 const r = fn.apply(this, args)
-                cb(r)
+                if(cb) cb(r);
                 timer = null;
             }, delay)
         }
@@ -29,7 +29,7 @@ export const debounce = <T>(fn: Function, delay = 500, cb?: (r: T) => void) => {
         if (timer) clearTimeout(timer);
         timer = setTimeout(() => {
             const r = fn.apply(this, args);
-            cb(r)
+            if(cb) cb(r);
             timer = null;
         }, delay)
     }

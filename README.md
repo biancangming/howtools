@@ -119,7 +119,7 @@
 - `copyToClipboard` 复制文本到剪贴板(浏览器环境)
 - `isDarkMode` 浏览器是否处于暗黑模式
 - `getSelectedText` 获取当前页面鼠标选中的文本
-
+- `getCalendarByDate` 根据年月日期生成对应的日历
 
 ## 支持
 

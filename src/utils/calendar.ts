@@ -51,7 +51,7 @@ export function getCalendarByDate(date: string, opts?: GetCalendarByDateOpts) {
         const _dayjs = new Date(dayjs)
         _dayjs.setDate(dayjs.getDate() + count)
 
-        if(ignoreLastWeek && count > 7 * 5){
+        if(ignoreLastWeek && count > 7 * 5 && _dayjs.getMonth() !== month){
             break
         }
 

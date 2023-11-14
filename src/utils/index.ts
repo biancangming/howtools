@@ -6,6 +6,7 @@ export * from "./regex"
 export * from "./dom"
 export * from "./base64"
 export * from "./reactive"
+export * from "./calendar"
 
 export * as util from "./util"
 export * as type from "./type"

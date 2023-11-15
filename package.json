@@ -1,6 +1,6 @@
 {
   "name": "howtools",
-  "version": "0.2.4-beta.5",
+  "version": "0.2.4-beta.6",
   "description": "a simple tool",
   "main": "dist/index.js",
   "scripts": {

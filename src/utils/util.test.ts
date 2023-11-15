@@ -60,5 +60,4 @@ console.log(base64.encode(imgUrl))
 // 日历
 console.log("===================日历 校验测试=============================")
 getCalendarByDate("2023-11-14")
-const x = getCalendarByDate("2023-11-14", { startByMonday: true })
-console.log(getCalendarByDate("2023-11"))
+getCalendarByDate("2023-11-14", { startByMonday: true })

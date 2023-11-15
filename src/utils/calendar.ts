@@ -33,7 +33,7 @@ export function getCalendarByDate(date: string, opts?: GetCalendarByDateOpts) {
         weekday: number,
     }[] = []
 
-    const _date = new Date(date)
+    const _date = new Date(new Date(date).getTime() + new Date(date).getTimezoneOffset() * 60 * 1000) // 获得一个UTC时间
     const year = _date.getFullYear()
     const month = _date.getMonth() // 第几个月
     // const day = _date.getDay() // 星期几
@@ -45,7 +45,7 @@ export function getCalendarByDate(date: string, opts?: GetCalendarByDateOpts) {
     if (dayjs_day > 0) {
         dayjs.setDate(dayjs.getDate() - (dayjs_day + (startByMonday ? -1 : 0)))
     }
-
+   
     // 补全正常数据
     let count = 0
     while (calendar.length < 7 * 6) {

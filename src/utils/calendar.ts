@@ -36,13 +36,14 @@ export function getCalendarByDate(date: string, opts?: GetCalendarByDateOpts) {
     const _date = new Date(date)
     const year = _date.getFullYear()
     const month = _date.getMonth() // 第几个月
-    const day = _date.getDay() // 星期几
+    // const day = _date.getDay() // 星期几
 
     const dayjs = new Date(`${year}-${month + 1}-01`)
+    const dayjs_day = dayjs.getDay() // 计算一号是星期几
 
     // 如果日期不是周日，重置dayjs到正常日历第一天。
-    if (day > 0) {
-        dayjs.setDate(dayjs.getDate() - (day + (startByMonday ? 0 : 1)))
+    if (dayjs_day > 0) {
+        dayjs.setDate(dayjs.getDate() - (dayjs_day + (startByMonday ? -1 : 0)))
     }
 
     // 补全正常数据

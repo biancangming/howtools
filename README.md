@@ -44,6 +44,10 @@
 - `objToBase64`  对象转base64
 - `base64Toobj`  base64 转对象
 
+#### 树节点操作类
+
+- `treeNode` 树节点操作类， add、remove、move
+
 #### 拷贝
 
 - `shallowClone` 浅拷贝
